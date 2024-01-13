@@ -13,7 +13,7 @@ const app = createApp({
   methods: {
     checkAdmin() {
       axios.post(`${url}/v2/api/user/check`)
-        .then(res => this.getProducts())
+        .then(() => this.getProducts())
         .catch(err => {
           alert(err.data.message);
           window.location = 'index.html';
@@ -31,7 +31,7 @@ const app = createApp({
     const token = document.cookie.replace(/(?:(?:^|.*;\s*)token\s*\=\s*([^;]*).*$)|^.*$/, "$1");
     axios.defaults.headers.common['Authorization'] = token;
     
-    this.checkAdmin();
+    this.getProducts();
   },
 });
 app.mount('#app');
